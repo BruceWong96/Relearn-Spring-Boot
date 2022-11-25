@@ -12,4 +12,6 @@ public class DemoController {
     public String echo () {
         return "Echo.";
     }
+
+    private String name;
 }
