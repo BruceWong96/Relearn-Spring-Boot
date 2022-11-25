@@ -12,6 +12,7 @@
         <module>demo01</module>
         <module>lab-47</module>
         <module>lab-48</module>
+        <module>lab-49</module>
     </modules>
 
     <properties>
