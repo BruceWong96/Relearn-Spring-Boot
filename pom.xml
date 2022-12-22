@@ -14,6 +14,8 @@
         <module>lab-48</module>
         <module>lab-49</module>
         <module>lab-55-mapstruct-demo</module>
+        <module>lab-spirngmvc-23-01</module>
+        <module>lab-springmvc-23-02</module>
     </modules>
 
     <properties>
