@@ -1,7 +1,11 @@
 package com.bruce.springboot.lab23.springmvc.controller;
 
+import com.bruce.springboot.lab23.springmvc.constants.ServiceExceptionEnum;
+import com.bruce.springboot.lab23.springmvc.core.exception.ServiceException;
 import com.bruce.springboot.lab23.springmvc.core.vo.CommonResult;
 import com.bruce.springboot.lab23.springmvc.vo.UserVO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,6 +16,9 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/users")
 public class UserController {
+
+    private final Logger logger = LoggerFactory.getLogger(getClass());
+
     /**
      * 获得指定用户编号的用户
      *
@@ -39,5 +46,26 @@ public class UserController {
         UserVO user = new UserVO().setId(id).setUsername(UUID.randomUUID().toString());
         //返回结果
         return CommonResult.success(user);
+    }
+
+    @GetMapping("/exception-01")
+    public UserVO exception01() {
+        throw new NullPointerException("没有鱼丸！！！");
+    }
+
+    @GetMapping("/exception-02")
+    public UserVO exception02() {
+        throw new ServiceException(ServiceExceptionEnum.USER_NOT_FOUND);
+    }
+
+    @GetMapping("/do_something")
+    public void doSomething() {
+        logger.info("[doSomething]");
+    }
+
+    @GetMapping("/current_user")
+    public UserVO currentUser() {
+        logger.info("[currentUser]");
+        return new UserVO().setId(10).setUsername(UUID.randomUUID().toString());
     }
 }

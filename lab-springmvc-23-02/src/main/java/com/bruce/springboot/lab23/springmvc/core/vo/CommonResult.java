@@ -6,7 +6,7 @@ import org.springframework.util.Assert;
 
 import java.io.Serializable;
 
-@Data
+
 public class CommonResult<T> implements Serializable {
     public static Integer CODE_SUCCESS = 0;
     /**
@@ -22,6 +22,38 @@ public class CommonResult<T> implements Serializable {
      */
     private T data;
 
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    @Override
+    public String toString() {
+        return "CommonResult{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
 
     /**
      * 将传入的 result 对象，转换成另外一个泛型结果的对象
